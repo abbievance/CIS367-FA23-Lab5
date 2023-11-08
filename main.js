@@ -5,6 +5,7 @@ const addButton = document.getElementById("add");
 const likeButton = document.getElementById("like");
 const cardsAllowed = document.getElementById("cards-in-list");
 const icon = document.querySelector(".fa-solid");
+const heartButton = document.querySelector(".fa-heart");
 const userCardContainer = document.querySelector(".user-cards");
 let activeIndex = Math.floor(59/2);
 
@@ -48,40 +49,16 @@ let backgroundColors = {
 const carousel = document.getElementsByClassName("carousel")[0];
 
 
-async function renderCards() {
+async function addCards() {
 
     let response = await fetch(API_URL);
     let data = await response.json();
-    carousel.innerHTML = "";
-    var windowWidth = window.innerWidth;
-    var cardWidth = 400;
 
     
     data.forEach( (item, index) => {
 
-
-        const length = 59;
-        let div = document.createElement('div');
-        div.classList.add("box");
-    
-        if( index < activeIndex){
-            div.classList.add("left");
-            const offset = windowWidth/2 - cardWidth/2 - index * 10;
-            div.style.transform = `translateX(${-offset}px)`;
-            //div.style.left = `${index*10}px`;
-            //div.style.transform+=` scale(${ Math.pow(0.9, length-index+1)})`;
-        }
-        else if(index === activeIndex)
-        {
-            div.classList.add("active");
-        }
-        else {
-            div.classList.add("right");
-            const offset = windowWidth/2 - cardWidth/2 - (length - index + 1) * 10;
-            div.style.transform = `translateX(${offset}px)`;
-            div.style.zIndex = (length - index);
-            // div.style.right  = `${offset}px`
-        }
+      let div = document.createElement('div');
+      div.classList.add("box");
     
         div.innerHTML = `
         <div
@@ -106,34 +83,34 @@ async function renderCards() {
             <div class="triangle-right-bottom"></div>
             <div class="image flex flex-col items-center mt-2 border-b-4 w-full">
               <img
-                class="w-2/3 border-l-4 border-r-4"
+                class="w-1/2 border-l-4 border-r-4"
                 src="https://fhu-faculty-api.netlify.app/images/headshots/${item.Image}"
                 alt="${item.FirstName} ${item.LastName}"
               />
             </div>
             <div class="name-container flex flex-col items-center ml-2">
-              <h2 class="font-main text-md text-gray-300">
+              <h2 class="font-main text-xs text-gray-300">
               ${item.NickName} | ${item.Type} | ${item.Rank} | ${item.EducationLevel}
               </h2>
-              <h1 class="font-main text-2xl font-bold text-gray-200 mt-2">
+              <h1 class="font-main text-xl font-bold text-gray-200 mt-2">
                 ${item.FirstName} ${item.LastName}
               </h1>
             </div>
     
             <div class="attack-container mt-2 relative ml-2">
               <div class="flex items-center justify-between">
-                <h1 class="font-main text-lg text-gray-200 font-bold">
+                <h1 class="font-main text-md text-gray-200 font-bold">
                 ${item.Attack1}
                 </h1>
-                <h1 class="font-main text-gray-200 text-md mr-2">
+                <h1 class="font-main text-gray-200 text-sm mr-2">
                 ${item.Attack1Damage}
                 </h1>
               </div>
               <div class="flex items-center justify-between mt-4">
-                <h1 class="font-main text-lg text-gray-200 font-bold">
+                <h1 class="font-main text-md text-gray-200 font-bold">
                 ${item.Attack2}
                 </h1>
-                <h1 class="font-main text-gray-200 text-md mr-2">
+                <h1 class="font-main text-gray-200 text-sm mr-2">
                 ${item.Attack2Damage}
                 </h1>
               </div>
@@ -142,35 +119,35 @@ async function renderCards() {
     
             <div class="weakness-container grid grid-cols-2 mt-2 relative h-20 ml-2">
               <div class="col-start-1">
-                <h1 class="font-main text-lg text-gray-200 font-bold">
+                <h1 class="font-main text-md text-gray-200 font-bold">
                   Resistances
                 </h1>
-                <h2 class="font-main text-gray-300 text-md">${item.Resistances}</h2>
+                <h2 class="font-main text-gray-300 text-sm">${item.Resistances}</h2>
               </div>
               <div class="col-start-2 border-l-4 border-white px-3"">
     
-                <h1 class="font-main text-lg text-gray-200 font-bold">
+                <h1 class="font-main text-md text-gray-200 font-bold">
                   Weaknesses
                 </h1>
-                <h2 class="font-main text-gray-300 text-md">${item.Weaknesses}</h2>
+                <h2 class="font-main text-gray-300 text-sm">${item.Weaknesses}</h2>
               </div>
             </div>
     
             <div class="stats-numbers-container flex justify-between items-center p-2 border-b-4 min-h-full">
-            <h1 class="font-main text-md text-gray-200 font-bold">
-            <id class="text-lg"> ${item.HitPoints}</id>  <id class="text-gray-300 text-sm">HP</id>
+            <h1 class="font-main text-xs text-gray-200 font-bold">
+            <id class="text-lg"> ${item.HitPoints}</id>  <id class="text-gray-300 text-xs">HP</id>
             </h1>
-            <h1 class="font-main text-md text-gray-200 font-bold">
-            <id class="text-lg"> ${item.DamageType}</id>   <id class="text-gray-300 text-sm">Damage</id>
+            <h1 class="font-main text-xs text-gray-200 font-bold">
+            <id class="text-lg"> ${item.DamageType}</id>   <id class="text-gray-300 text-xs">Damage</id>
             </h1>
-            <h1 class="font-main text-md text-gray-200 font-bold">
-            <id class="text-lg"> ${item.Stamina}</id>   <id class="text-gray-300 text-sm">Stamina</id>
+            <h1 class="font-main text-xs text-gray-200 font-bold">
+            <id class="text-lg"> ${item.Stamina}</id>   <id class="text-gray-300 text-xs">Stamina</id>
             </h1>
             </div>
     
     
     
-            <h1 class="font-main text-gray-400 text-right text-sm mr-12 py-1 min-h-full">
+            <h1 class="font-main text-gray-400 text-right text-xs mr-12 py-1 min-h-full">
             ${item.HashTag}
             </h1>
     
@@ -183,6 +160,65 @@ async function renderCards() {
         
     
     });
+}
+
+function updateCards() {
+
+  var windowWidth = window.innerWidth;
+  console.log(windowWidth);
+  const length = 59;
+
+  const boxes = document.querySelectorAll(".carousel .box");
+  
+  boxes.forEach( (div, index) => {
+    
+      //let div = document.createElement('div');
+      //div.classList.add("box");
+  
+      if( index < activeIndex){
+          //div.classList.add("left");
+          div.classList.remove("active");
+          //const offset = windowWidth/2 - cardWidth/2 - index * 10;
+          // div.style.transform = `translateX(${-offset}px)`;
+          
+          div.style.zIndex = index;
+          const offset = 100+(length-index);
+          div.style.transform = `translateX(-${offset}%) scale(100%)`;
+         
+          // div.style.left = `${index*8}px`
+          //div.style.transform+=` scale(${ Math.pow(0.9, length-index+1)})`;
+      }
+      else if(index === activeIndex)
+      {
+          div.classList.add("active");
+          div.style.zIndex = 300;
+          div.style.transform = `translateX(0) scale(120%)`;
+
+      }
+      else {
+          //div.classList.add("right");
+          div.classList.remove("active");
+          // const offset = windowWidth/2 - cardWidth/2 - (length - index+1) * 10;
+          // console.log(offset)
+          // div.style.transform = `translateX(${offset}px)`;
+          div.style.zIndex = (length - index);
+          const offset = 100+(index);
+
+
+          div.style.transform = `translateX(${offset}%) scale(100%)`;
+
+          // div.style.right = `${ (length-index)*8}px`
+          //div.style.right  = `${offset}px`
+      }
+
+        if (div.classList.contains("liked")){
+          heartButton.classList.add("clicked");
+        }
+        else{
+          heartButton.classList.remove("clicked");
+        }
+  });
+
 }
 
 async function renderUserCards(){
@@ -324,19 +360,27 @@ async function addCard(){
 
 // }
 
-renderCards();
+addCards();
+updateCards();
 
-window.addEventListener("resize", renderCards);
+window.addEventListener("resize", updateCards);
 
 
 document.getElementById("prevButton").addEventListener("click", ()=>{
-    activeIndex--;
-    renderCards();
+  if( activeIndex >= 0)
+  {
+      activeIndex--;
+      updateCards();
+  }
+
 });
 
 document.getElementById("nextButton").addEventListener("click", ()=>{
-    activeIndex++;
-    renderCards();
+  if( activeIndex < 59)
+  {
+      activeIndex++;
+      updateCards();
+  }
 });
 
 {/* <i class="fa-solid fa-minus"></i> */}
@@ -358,11 +402,35 @@ addButton.addEventListener("click", () => {
 
 })
 
+// likeButton.addEventListener("click", () => {
+//   if (document.querySelector(".fa-heart").classList.contains("clicked")){
+//     document.querySelector(".fa-heart").classList.remove("clicked");
+//   }
+//   else{
+//     document.querySelector(".fa-heart").classList.add("clicked");
+//   }
+// })
+
+
 likeButton.addEventListener("click", () => {
-  if (document.querySelector(".fa-heart").classList.contains("clicked")){
-    document.querySelector(".fa-heart").classList.remove("clicked");
-  }
-  else{
-    document.querySelector(".fa-heart").classList.add("clicked");
-  }
-})
+  const boxes = document.querySelectorAll(".carousel .box");
+
+  boxes.forEach( (div, index) => {
+
+    if (index === activeIndex){
+      if (heartButton.classList.contains("clicked")){
+        div.classList.remove("liked");
+        heartButton.classList.remove("clicked");
+      }
+      else{
+        div.classList.add("liked");
+        heartButton.classList.add("clicked");
+      }
+    }
+
+   })
+});
+
+
+
+
