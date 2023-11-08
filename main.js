@@ -83,7 +83,7 @@ async function addCards() {
             <div class="triangle-right-bottom"></div>
             <div class="image flex flex-col items-center mt-2 border-b-4 w-full">
               <img
-                class="w-1/2 border-l-4 border-r-4"
+                class="w-1/2 border-l-4 border-r-4 max-h-40 object-cover"
                 src="https://fhu-faculty-api.netlify.app/images/headshots/${item.Image}"
                 alt="${item.FirstName} ${item.LastName}"
               />
