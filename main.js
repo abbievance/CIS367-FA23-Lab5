@@ -173,22 +173,14 @@ function updateCards() {
   const boxes = document.querySelectorAll(".carousel .box");
   
   boxes.forEach( (div, index) => {
-    
-      //let div = document.createElement('div');
-      //div.classList.add("box");
   
       if( index < activeIndex){
-          //div.classList.add("left");
           div.classList.remove("active");
-          //const offset = windowWidth/2 - cardWidth/2 - index * 10;
-          // div.style.transform = `translateX(${-offset}px)`;
           
           div.style.zIndex = index;
           const offset = 100+(length-index);
           div.style.transform = `translateX(-${offset}%) scale(100%)`;
          
-          // div.style.left = `${index*8}px`
-          //div.style.transform+=` scale(${ Math.pow(0.9, length-index+1)})`;
       }
       else if(index === activeIndex)
       {
@@ -198,27 +190,12 @@ function updateCards() {
 
       }
       else {
-          //div.classList.add("right");
           div.classList.remove("active");
-          // const offset = windowWidth/2 - cardWidth/2 - (length - index+1) * 10;
-          // console.log(offset)
-          // div.style.transform = `translateX(${offset}px)`;
           div.style.zIndex = (length - index);
           const offset = 100+(index);
-
-
           div.style.transform = `translateX(${offset}%) scale(100%)`;
 
-          // div.style.right = `${ (length-index)*8}px`
-          //div.style.right  = `${offset}px`
       }
-
-        // if (div.classList.contains("liked")){
-        //   heartButton.classList.add("clicked");
-        // }
-        // else{
-        //   heartButton.classList.remove("clicked");
-        // }
   });
 
 }
@@ -365,33 +342,7 @@ document.getElementById("nextButton").addEventListener("click", ()=>{
   }
 });
 
-{/* <i class="fa-solid fa-minus"></i> */}
-
 addButton.addEventListener("click", () => {
     addCard();
 
 })
-
-
-// likeButton.addEventListener("click", () => {
-//   const boxes = document.querySelectorAll(".carousel .box");
-
-//   boxes.forEach( (div, index) => {
-
-//     if (index === activeIndex){
-//       if (heartButton.classList.contains("clicked")){
-//         div.classList.remove("liked");
-//         heartButton.classList.remove("clicked");
-//       }
-//       else{
-//         div.classList.add("liked");
-//         heartButton.classList.add("clicked");
-//       }
-//     }
-
-//    })
-// });
-
-
-
-
