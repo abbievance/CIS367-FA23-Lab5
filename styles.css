@@ -36,10 +36,6 @@ body{
 
 }
 
-/* width: 400px;
-height: 650px;
-overflow: hidden; */
-
 .box {
     /* height: 500px;
     max-height: 500px; */
@@ -163,6 +159,7 @@ overflow: hidden; */
     margin: auto;
     height: 10vh;
 }
+
 
 .fa-solid, .fa-regular{
     color: white;

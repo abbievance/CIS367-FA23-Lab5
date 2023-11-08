@@ -213,12 +213,12 @@ function updateCards() {
           //div.style.right  = `${offset}px`
       }
 
-        if (div.classList.contains("liked")){
-          heartButton.classList.add("clicked");
-        }
-        else{
-          heartButton.classList.remove("clicked");
-        }
+        // if (div.classList.contains("liked")){
+        //   heartButton.classList.add("clicked");
+        // }
+        // else{
+        //   heartButton.classList.remove("clicked");
+        // }
   });
 
 }
@@ -345,26 +345,6 @@ async function addCard(){
   renderUserCards();
 }
 
-// async function removeCard(){
-//   let response = await fetch(API_URL);
-//   let data = await response.json();
-
-//   userCards.forEach((item, index) => {
-//     if (item.FirstName === data[activeIndex].FirstName){
-//         userCards.splice(index, 1);
-//         console.log(userCards);
-
-//         userCardContainer.innerHTML = "";
-//     }
-
-  
-//   })
-
-//   renderUserCards();
-
-// }
-
-
 window.addEventListener("resize", updateCards);
 
 
@@ -389,49 +369,28 @@ document.getElementById("nextButton").addEventListener("click", ()=>{
 
 addButton.addEventListener("click", () => {
     addCard();
-  // if (icon.classList.contains("fa-plus") && userCards.length < 8) {
-  //   document.querySelector(".fa-solid").classList.remove("fa-plus");
-  //   document.querySelector(".fa-solid").classList.add("fa-minus");
-  //   addCard();
-  // }
-
-
-  // else if (icon.classList.contains("fa-minus") ){
-  //   document.querySelector(".fa-solid").classList.remove("fa-minus");
-  //   document.querySelector(".fa-solid").classList.add("fa-plus");
-  //   removeCard();
-  // }
 
 })
 
+
 // likeButton.addEventListener("click", () => {
-//   if (document.querySelector(".fa-heart").classList.contains("clicked")){
-//     document.querySelector(".fa-heart").classList.remove("clicked");
-//   }
-//   else{
-//     document.querySelector(".fa-heart").classList.add("clicked");
-//   }
-// })
+//   const boxes = document.querySelectorAll(".carousel .box");
 
+//   boxes.forEach( (div, index) => {
 
-likeButton.addEventListener("click", () => {
-  const boxes = document.querySelectorAll(".carousel .box");
+//     if (index === activeIndex){
+//       if (heartButton.classList.contains("clicked")){
+//         div.classList.remove("liked");
+//         heartButton.classList.remove("clicked");
+//       }
+//       else{
+//         div.classList.add("liked");
+//         heartButton.classList.add("clicked");
+//       }
+//     }
 
-  boxes.forEach( (div, index) => {
-
-    if (index === activeIndex){
-      if (heartButton.classList.contains("clicked")){
-        div.classList.remove("liked");
-        heartButton.classList.remove("clicked");
-      }
-      else{
-        div.classList.add("liked");
-        heartButton.classList.add("clicked");
-      }
-    }
-
-   })
-});
+//    })
+// });
 
 
 
