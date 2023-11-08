@@ -157,6 +157,8 @@ async function addCards() {
     
         carousel.appendChild(div);
 
+        updateCards();
+
         
     
     });
@@ -220,6 +222,8 @@ function updateCards() {
   });
 
 }
+
+addCards();
 
 async function renderUserCards(){
   let div = document.createElement('div');
@@ -360,8 +364,6 @@ async function addCard(){
 
 // }
 
-addCards();
-updateCards();
 
 window.addEventListener("resize", updateCards);
 
