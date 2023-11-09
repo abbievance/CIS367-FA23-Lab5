@@ -175,11 +175,13 @@ body{
     color: red;
 }
 
-/* I copied most of this off the internet */
+/* I copied most of this off the internet lol*/
+/* except the gradient I hand made that (it was annoying) */
+
 
 
 .fa-solid{
-    background-image: linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376);
+  background: linear-gradient(#686868, #949494, #d3d3d3, #fff);
     background-size: 100%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -194,22 +196,7 @@ body{
 
 
 .fa-solid:hover {
-    animation: rainbow-text-animation 0.1s ease forwards;
     transform: scale(115%);
   }
 
-@keyframes rainbow-text-animation {
-    0% {
-      background-size: 57%;
-      background-position: 0 0;
-    }
-    50% {
-      background-size: 57%;
-      background-position: 0 1em;
-    }
-    100% {
-      background-size: 300%;
-      background-position: -9em 1em;
-    }
-  }
 
