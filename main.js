@@ -346,3 +346,18 @@ addButton.addEventListener("click", () => {
     addCard();
 
 })
+
+likeButton.addEventListener("click", () => {
+      if (heartButton.classList.contains("fa-regular")){
+        heartButton.classList.remove("fa-regular");
+        heartButton.classList.add("fa-solid");
+      }
+      else{
+        heartButton.classList.remove("fa-solid");
+        heartButton.classList.add("fa-regular");
+      }
+    }
+
+);
+
+

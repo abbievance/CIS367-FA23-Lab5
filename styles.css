@@ -171,16 +171,12 @@ body{
     font-size: 4rem;
 }
 
-.clicked{
-    color: red;
-}
-
 /* I copied most of this off the internet lol*/
 /* except the gradient I hand made that (it was annoying) */
 
 
 
-.fa-solid{
+.fa-solid, .fa-regular{
   background: linear-gradient(#686868, #949494, #d3d3d3, #fff);
     background-size: 100%;
     background-clip: text;
@@ -195,7 +191,7 @@ body{
 }
 
 
-.fa-solid:hover {
+.fa-solid:hover, .fa-regular:hover {
     transform: scale(115%);
   }
 
